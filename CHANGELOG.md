@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.4.3
+
+- Fixed: finished quests were never read correctly. When the game listed them as a plain list of quest numbers, the add-on took each number's place in the list as the quest number, so it checked quests 1 to 355 whatever you had done, and your finished quests never ticked anything (books and gear included). It now reads the real quest numbers
+
 ## v0.4.2
 
 - Fixed: talking to an NPC could throw "attempted to index a table that cannot be indexed with secret keys". When the game hides the NPC's name, Whatnot now treats it as no name instead of using it

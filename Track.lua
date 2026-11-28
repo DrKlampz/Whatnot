@@ -635,7 +635,7 @@ local function FinishedSet()
     if not ok0 or type(raw) ~= "table" then return nil end
     local set = {}
     -- the game can hand back a list it will not let us walk (secret keys); then there is nothing to compare
-    local ok = pcall(function() for id, v in pairs(raw) do if v then set[id] = true end end end)
+    local ok = pcall(function() for id, v in pairs(raw) do if type(v) == "number" then set[v] = true elseif v then set[id] = true end end end)
     if not ok then return nil end
     return set
 end
@@ -830,7 +830,8 @@ function T.ScanHistory(quiet)
     end
     local ids = {}
     for k, v in pairs(raw) do
-        if type(k) == "number" and v then ids[#ids + 1] = k elseif type(v) == "number" then ids[#ids + 1] = v end
+        -- the game can hand back {id1, id2, ...} (the numbers are the values) or {[id] = true} (the numbers are the keys)
+        if type(v) == "number" then ids[#ids + 1] = v elseif type(k) == "number" and v then ids[#ids + 1] = k end
     end
     histBusy = true
     local found, missing, pos = 0, {}, 1
