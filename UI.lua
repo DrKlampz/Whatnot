@@ -882,7 +882,9 @@ local function BuildWindow()
     W.status:SetTextColor(0.65, 0.65, 0.7)
     W.status:SetText("Tick the box when finished. Track shows it on your maps. Go points your arrow at it.")
     W.faction = W:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-    W.faction:SetPoint("LEFT", W.titleFS, "RIGHT", 10, -1)
+    -- tied to the character picker (not to the title, which a window look can move), so it can never sit on top of it
+    W.faction:SetPoint("RIGHT", W.who, "LEFT", -8, 0)
+    W.faction:SetWidth(170) W.faction:SetJustifyH("RIGHT") W.faction:SetWordWrap(false)
 
     ApplyLook()
     W:SetScript("OnShow", function() ApplyLook() UI.Refresh() end)

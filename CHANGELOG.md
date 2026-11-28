@@ -2,6 +2,7 @@
 
 ## v0.4.3
 
+- Fixed the top right of the window: the faction note ("Horde (detected)") drew on top of the character picker whenever the window look moved the title. It is now fixed to the left of the picker
 - Fixed: finished quests were never read correctly. When the game listed them as a plain list of quest numbers, the add-on took each number's place in the list as the quest number, so it checked quests 1 to 355 whatever you had done, and your finished quests never ticked anything (books and gear included). It now reads the real quest numbers
 
 ## v0.4.2
